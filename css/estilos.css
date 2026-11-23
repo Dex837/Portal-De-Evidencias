@@ -1,0 +1,928 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --peach: #f7d8bf;
+  --peach2: #fbe9d9;
+  --cream: #f5f3e5;
+  --paper: #fffdfa;
+  --field: #fff1bd;
+  --ink: #171514;
+  --muted: #a7a08f;
+  --shadow: #a7a19a;
+  --accent: #eadcc0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: 'Oswald', sans-serif;
+  background: 
+    radial-gradient(ellipse at 12% 12%, rgba(255,255,255,.65) 0 9%, transparent 32%),
+    radial-gradient(ellipse at 95% 75%, rgba(232,157,127,.25) 0 10%, transparent 35%),
+    linear-gradient(125deg, #f9e4d1 0%, #f5cba9 45%, #fbe8d9 70%, #f3c5a5 100%);
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .25;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
+  z-index: -1;
+}
+
+header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px clamp(18px, 5vw, 60px);
+}
+
+.brand {
+  font-size: clamp(17px, 2.3vw, 23px);
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+.brand span {
+  color: #9b6c51;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--ink);
+  border-radius: 30px;
+  padding: 7px 13px;
+  background: #fffaf0;
+  color: var(--ink);
+  font: 600 14px 'Nunito', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #b5a89b;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1px solid #b9b39e;
+}
+
+main {
+  width: min(100% - 28px, 620px);
+  margin: 16px auto 30px;
+}
+
+.screen {
+  display: none;
+  min-height: 600px;
+  background: rgba(255, 253, 250, .92);
+  border-radius: 23px;
+  padding: clamp(23px, 5vw, 43px);
+  box-shadow: 0 10px 30px #9b68441a;
+  animation: appear .22s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: .45; transform: translateY(5px); }
+  to { opacity: 1; transform: none; }
+}
+
+h1 {
+  font-size: clamp(23px, 4vw, 30px);
+  text-align: center;
+  margin: 0 auto 32px;
+  background: var(--cream);
+  border-radius: 28px;
+  padding: 10px 25px;
+  width: fit-content;
+  max-width: 100%;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+form {
+  max-width: 440px;
+  margin: auto;
+}
+
+.field {
+  margin: 0 0 18px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input, textarea, select {
+  width: 100%;
+  border: 1.5px solid var(--ink);
+  border-radius: 18px;
+  background: var(--field);
+  padding: 11px 15px;
+  color: #625c50;
+  font: 600 14px 'Nunito', sans-serif;
+  outline: none;
+  box-shadow: 0 4px 0 var(--shadow);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid #c79c79;
+  outline-offset: 2px;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #b7aa8c;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 88px;
+  border-radius: 28px;
+}
+
+button, .button {
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1.5px solid var(--ink);
+  border-radius: 28px;
+  background: #f5f4f0;
+  color: var(--ink);
+  padding: 10px 24px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #c7c1b8;
+  transition: transform .15s, background .15s;
+}
+
+button:hover, .button:hover {
+  transform: translateY(-1px);
+  background: #fff;
+}
+
+.primary {
+  display: block;
+  margin: 25px auto 0;
+  min-width: 140px;
+}
+
+.download {
+  background: var(--accent);
+  margin-top: 26px;
+}
+
+.center {
+  text-align: center;
+}
+
+.link {
+  display: inline-block;
+  color: #5427bc;
+  text-decoration: underline;
+  font-weight: 600;
+  margin: 5px 8px;
+  cursor: pointer;
+}
+
+.subtle {
+  font: 600 14px 'Nunito', sans-serif;
+  color: #635b50;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.profile-data {
+  display: gray;
+  grid-template-columns: 1fr;
+  gap: 17px;
+}
+
+.profile-data .field {
+  margin-bottom: 0;
+}
+
+.upload {
+  border: 1.5px dashed #8e887d;
+  border-radius: 17px;
+  background: #fff5d3;
+  padding: 18px;
+  text-align: center;
+  color: #8e836d;
+  font: 600 13px 'Nunito', sans-serif;
+}
+
+.upload input {
+  box-shadow: none;
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+}
+
+.document {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 80px;
+  margin: 6px 0 12px;
+  border: 1px solid #aaa;
+  background: linear-gradient(135deg, #fff, #e4eddf);
+  border-radius: 6px;
+  color: #858b7c;
+  font: 11px 'Nunito', sans-serif;
+  text-align: center;
+}
+
+.section-label {
+  font-size: 18px;
+  margin: 18px 0 8px;
+}
+
+.small-note {
+  font: 12px 'Nunito', sans-serif;
+  color: #928b7c;
+  margin-top: 5px;
+}
+
+.dropdown-wrap {
+  position: relative;
+}
+
+.dropdown {
+  width: 100%;
+  text-align: left;
+  background: var(--field);
+  box-shadow: 0 4px 0 var(--shadow);
+  border-radius: 19px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 7px);
+  z-index: 5;
+  background: #fffdf6;
+  border: 1.5px solid var(--ink);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px #00000018;
+}
+
+.dropdown-menu.open {
+  display: block;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 12px 16px;
+  font: 600 14px 'Nunito', sans-serif;
+}
+
+.dropdown-menu button:hover {
+  background: var(--field);
+}
+
+.selected-tag {
+  display: inline-block;
+  margin: 12px 6px 0 0;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--cream);
+  font: 700 12px 'Nunito', sans-serif;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 auto 35px;
+  width: min(100% - 28px, 620px);
+}
+
+.nav-btn {
+  font-size: 13px;
+  padding: 9px 15px;
+}
+
+.dots {
+  font: 600 13px 'Nunito', sans-serif;
+  color: #64594e;
+}
+
+@media(min-width: 700px) {
+  main { margin-top: 24px; }
+  .screen { min-height: 620px; }
+  .profile-data { grid-template-columns: 1fr 1fr; }
+  .profile-data .field:nth-child(3) { grid-column: 1/-1; }
+}
+
+@media(max-width: 430px) {
+  header { height: 65px; }
+  .brand { font-size: 16px; }
+  .profile-link span:last-child { display: none; }
+  .screen { padding: 24px 19px; min-height: 560px; }
+  .two-col { grid-template-columns: 1fr; }
+  .navigation { flex-wrap: wrap; }
+  .nav-btn { padding: 8px 12px; }
+}
+
+/* =====================================
+   PERFIL Y ACCIONES
+===================================== */
+
+.profile-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 17px;
+}
+
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.profile-actions .primary {
+  margin: 0;
+}
+
+.logout-btn {
+  background: #fff0eb;
+  border-color: #9f4938;
+  color: #8d3426;
+}
+
+/* =====================================
+   NAVEGACIÓN DE APARTADOS
+===================================== */
+
+.section-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 30px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #e5d9c8;
+}
+
+.section-navigation .primary {
+  margin: 0;
+}
+
+.secondary-button {
+  background: #fffaf0;
+  padding: 10px 18px;
+}
+
+/* =====================================
+   VENTANAS MODALES
+===================================== */
+
+.modal-backdrop[hidden] {
+  display: none !important;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(30, 24, 20, .48);
+  backdrop-filter: blur(3px);
+}
+
+.cv-modal {
+  position: relative;
+  width: min(100%, 520px);
+  max-height: min(85vh, 760px);
+  overflow-y: auto;
+  padding: 30px 25px 24px;
+  border: 1.5px solid #2b2621;
+  border-radius: 23px;
+  background: #fffdfa;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, .25);
+  animation: appear .18s ease;
+}
+
+.cv-modal h2 {
+  margin: 0 35px 10px 0;
+  color: var(--ink);
+  font-size: 23px;
+  line-height: 1.25;
+}
+
+.cv-modal > .subtle {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.modal-close {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  font: 26px/1 'Nunito', sans-serif;
+  box-shadow: none;
+}
+
+.section-picker-list {
+  display: grid;
+  gap: 9px;
+}
+
+.section-picker-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  border-radius: 15px;
+  background: #fff7e7;
+  text-align: left;
+  box-shadow: none;
+}
+
+.section-picker-item:hover {
+  background: #f8e8cf;
+}
+
+.section-picker-info {
+  display: grid;
+  gap: 3px;
+}
+
+.section-picker-info strong {
+  font: 700 15px 'Nunito', sans-serif;
+}
+
+.section-picker-info small {
+  color: #776d5e;
+  font: 600 12px 'Nunito', sans-serif;
+}
+
+.section-picker-arrow {
+  font-size: 25px;
+}
+
+.missing-fields {
+  margin: 0;
+  padding: 16px 18px 16px 38px;
+  border-radius: 15px;
+  background: #fff7e7;
+  color: #554c40;
+  font: 600 14px/1.7 'Nunito', sans-serif;
+}
+
+.modal-note {
+  margin: 13px 2px 0;
+  color: #766b5d;
+  font: 12px/1.5 'Nunito', sans-serif;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.modal-actions .primary {
+  margin: 0;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+@media (min-width: 700px) {
+  .profile-data {
+    grid-template-columns: 1fr 1fr;
+  }
+  .profile-data .field:nth-child(3) {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 430px) {
+  .profile-actions,
+  .section-navigation,
+  .modal-actions {
+    flex-direction: column;
+  }
+  .profile-actions button,
+  .section-navigation button,
+  .modal-actions button {
+    width: 100%;
+  }
+  .cv-modal {
+    padding: 27px 18px 20px;
+  }
+}
+
+/* Estado del guardado automático de los apartados */
+.save-status {
+  margin: 12px 0 4px;
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+.save-status.save-success { color: #15803d; }
+.save-status.save-error { color: #b91c1c; }
+
+
+/* =====================================
+   PLANTILLA DE CV PARA IMPRESIÓN / PDF
+===================================== */
+
+#cv-print {
+  display: none;
+}
+
+#download-cv-btn:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 17mm;
+}
+
+@media print {
+  html, body {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #1f2937 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body > *:not(#cv-print) {
+    display: none !important;
+  }
+
+  #cv-print {
+    display: block !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    color: #1f2937;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+
+  .cv-print-header {
+    display: block;
+    margin: 0 0 23pt;
+    padding: 0 0 12pt;
+    background: transparent;
+    height: auto;
+  }
+
+  .cv-print-header h1 {
+    width: auto;
+    max-width: none;
+    margin: 0 0 5pt;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #17365d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25pt;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-print-contact {
+    margin: 0 0 10pt;
+    color: #526174;
+    font-size: 10pt;
+  }
+
+  .cv-print-divider {
+    height: 3px;
+    margin: 10pt 0 9pt;
+    background: #24476b;
+  }
+
+  .cv-print-label {
+    margin: 0;
+    color: #64748b;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .cv-print-section {
+    margin: 0 0 17pt;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-print-section h2 {
+    margin: 0 0 8pt;
+    padding: 0 0 5pt;
+    border-bottom: 1px solid #cbd5e1;
+    color: #17365d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+  }
+
+  .cv-print-section-content {
+    display: grid;
+    gap: 7pt;
+  }
+
+  .cv-print-entry {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-print-entry strong {
+    display: block;
+    margin: 0 0 1pt;
+    color: #334155;
+    font-size: 9.5pt;
+  }
+
+  .cv-print-entry p {
+    margin: 0;
+    color: #374151;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* Selector de fotografía opcional para el CV */
+.cv-photo-picker {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px dashed #b8c5d4;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.cv-photo-picker label {
+  display: block;
+  margin-bottom: 8px;
+  color: #17365d;
+  font-weight: 800;
+}
+
+.cv-photo-picker input {
+  width: 100%;
+  font-family: inherit;
+}
+
+/* Plantilla moderna profesional para impresión */
+#cv-print { display: none; }
+
+@page {
+  size: A4;
+  /* El margen cero evita encabezados y pies automáticos del navegador. */
+  margin: 0;
+}
+
+@media print {
+  html, body {
+    width: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #263445 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body > *:not(#cv-print) { display: none !important; }
+
+  #cv-print {
+    display: block !important;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 12mm 14mm;
+    color: #263445;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9pt;
+    line-height: 1.35;
+  }
+
+  .cv-print-header {
+    display: flex;
+    align-items: center;
+    gap: 16pt;
+    margin: 0 0 13pt;
+    padding: 0 0 12pt;
+    border-bottom: 3px solid #24476b;
+    background: transparent;
+    height: auto;
+  }
+
+  .cv-print-photo {
+    flex: 0 0 76pt;
+    width: 76pt;
+    height: 88pt;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 7pt;
+    border: 1px solid #d7e0e9;
+  }
+
+  .cv-print-identity { min-width: 0; flex: 1; }
+
+  .cv-print-header h1 {
+    width: auto;
+    max-width: none;
+    margin: 0 0 4pt;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: #17365d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 23pt;
+    font-weight: 700;
+    line-height: 1.08;
+    text-align: left;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-print-contact {
+    margin: 0 0 5pt;
+    color: #526174;
+    font-size: 9pt;
+  }
+
+  .cv-print-label {
+    margin: 0;
+    color: #718096;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+  }
+
+  .cv-print-section {
+    margin: 0 0 10pt;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .cv-print-section h2 {
+    margin: 0 0 6pt;
+    padding: 0 0 4pt;
+    border-bottom: 1px solid #cbd5e1;
+    color: #17365d;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: .55px;
+    text-transform: uppercase;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cv-print-section-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 15pt;
+    row-gap: 6pt;
+  }
+
+  .cv-print-entry {
+    min-width: 0;
+    margin: 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .cv-print-entry h3 {
+    margin: 0 0 2pt;
+    color: #263f5b;
+    font-size: 9pt;
+    font-weight: 700;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-print-meta {
+    margin: 0;
+    color: #66758a;
+    font-size: 8pt;
+    font-weight: 600;
+  }
+
+  .cv-print-description {
+    margin: 2pt 0 0;
+    color: #3d4b5c;
+    font-size: 8.5pt;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-print-skill-entry h3 {
+    margin-bottom: 4pt;
+  }
+
+  .cv-print-skill-list {
+    margin: 0;
+    padding-left: 13pt;
+    color: #3d4b5c;
+    font-size: 8.5pt;
+    line-height: 1.4;
+  }
+
+  .cv-print-skill-list li {
+    margin: 0 0 1.5pt;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-print-skill-list .cv-print-skill-category {
+    margin-top: 3pt;
+    list-style: none;
+    font-weight: 700;
+    color: #526174;
+  }
+
+  .cv-print-skill-list .cv-print-skill-category:first-child {
+    margin-top: 0;
+  }
+
+  @media (max-width: 700px) {
+    .cv-print-section-content { grid-template-columns: 1fr; }
+  }
+}
+
+
+/* Campo de texto libre para intereses profesionales */
+#intereses-texto {
+  width: 100%;
+  min-height: 130px;
+  padding: 14px 16px;
+  border: 1px solid #c9cbd8;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font: 500 14px 'Nunito', sans-serif;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+#intereses-texto:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

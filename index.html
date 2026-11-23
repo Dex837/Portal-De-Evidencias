@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal de evidencia</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="brand">PORTAL <span>DE EVIDENCIA</span></div>
+    <button class="profile-link" type="button" onclick="goTo(2)" aria-label="Ir a Perfil">
+      <span class="avatar">♙</span><span>Perfil</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- Pantalla 0: Inicio de sesión -->
+  <section class="screen active" data-title="Inicio de sesión">
+      <h1>Inicio de sesión</h1>
+  <form id="login-form">
+   <div class="field">
+     <label for="login-email">Correo electrónico</label>
+     <input
+      id="login-email"
+      type="email"
+      placeholder="Ingresa tu correo"
+      required>
+   </div>
+
+   <div class="field">
+     <label for="login-pass">Contraseña</label>
+     <input
+      id="login-pass"
+      type="password"
+      placeholder="Ingresa tu contraseña"
+      required>
+    </div>
+
+   <div id="login-message" aria-live="polite"></div>
+   <button class="primary" type="submit">
+     Iniciar sesión
+   </button>
+
+   <div class="center" style="margin-top:26px">
+    <button type="button" class="link" id="go-register">
+      Registrarse
+    </button>
+   </div>
+   </form>
+  </section>
+    
+<!-- Pantalla 1: Registrarse -->
+   <section class="screen" data-title="Registrarse">
+     <h1>Registrarse</h1>
+
+      <form id="register-form">
+
+      <div class="field"> 
+        <label for="register-name">Nombre completo y apellidos</label>
+       <input
+        id="register-name"
+        type="text"
+        placeholder="Nombre completo"
+        required>
+     </div>
+
+     <div class="field">
+       <label for="register-birthdate">Fecha de nacimiento</label>
+       <input
+        id="register-birthdate"
+        type="date"
+        required>
+     </div>
+
+     <div class="field">
+       <label for="register-email">Correo electrónico</label>
+       <input
+        id="register-email"
+        type="email"
+        placeholder="Ejemplo@gmail.com"
+        required>
+     </div>
+
+     <div class="field">
+        <label for="register-username">Usuario</label>
+       <input
+        id="register-username"
+        type="text"
+        placeholder="Crea un usuario"
+        required>
+     </div>
+
+     <div class="field">
+       <label for="register-password">Contraseña</label>
+       <input
+        id="register-password"
+        type="password"
+        placeholder="Crea una contraseña"
+        minlength="6"
+        required>
+      </div>
+
+      <div id="register-message" aria-live="polite"></div>
+
+      <button class="primary" type="submit">
+        Registrar cuenta
+      </button>
+    </form>
+
+    <div class="screen-actions">
+     <button type="button" onclick="goTo(0)">
+       Regresar
+     </button>
+    </div>
+  </section>
+
+<!-- Pantalla 2: Perfil -->
+   <section class="screen" data-title="Perfil">
+    <h1>Perfil</h1>
+
+    <div class="profile-data">
+      <div class="field">
+        <label>Nombre completo:</label>
+        <input id="profile-name" type="text" readonly>
+      </div>
+      <div class="field">
+        <label>Fecha de nacimiento:</label>
+        <input id="profile-birthdate" type="text" readonly>
+      </div>
+      <div class="field">
+        <label>Correo electrónico:</label>
+        <input id="profile-email" type="email" readonly>
+      </div>
+      <div class="field">
+        <label>Nombre de usuario:</label>
+        <input id="profile-username" type="text" readonly>
+      </div>
+    </div>
+
+    <div class="profile-actions">
+      <button type="button" class="primary" id="continue-cv-btn">Continuar con mi CV</button>
+      <button type="button" class="logout-btn" id="logout-btn">Cerrar sesión</button>
+    </div>
+  </section>
+
+    <!-- Pantalla 3: Formación académica -->
+    <section class="screen" data-title="Formación académica">
+      <h1>Formación Académica</h1>
+      <form>
+        <div class="section-label">Preparatoria</div>
+        <div class="two-col">
+          <div class="field"><label>Nombre de institución</label><input data-field="preparatoriaInstitucion" placeholder="Institución"></div>
+          <div class="field"><label>Periodo</label><input data-field="preparatoriaPeriodo" placeholder="2021 - 2024"></div>
+        </div>
+        <div class="field"><label>Certificado</label><div class="upload">Certificado .jpg<input type="file" accept="image/*,.pdf"></div></div>
+        
+        <div class="section-label">Universidad</div>
+        <div class="two-col">
+          <div class="field"><label>Nombre de institución</label><input data-field="universidadInstitucion" placeholder="Institución"></div>
+          <div class="field"><label>Nivel</label>
+            <select data-field="universidadNivel">
+              <option>Selecciona nivel</option>
+              <option>TSU</option>
+              <option>Ingeniería</option>
+              <option>Maestría</option>
+            </select>
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="field"><label>Certificado</label><div class="upload">Certificado .jpg<input type="file" accept="image/*,.pdf"></div></div>
+          <div class="field"><label>Periodo</label><input data-field="universidadPeriodo" placeholder="TSU: 2025 - 2027"></div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Pantalla 4: Formación extracurricular -->
+    <section class="screen" data-title="Formación extracurricular">
+      <h1>Formación Extracurricular</h1>
+      <form>
+        <div class="field"><label>Cursos:</label><input data-field="cursos"></div>
+        <div class="field"><label>Congresos:</label><input data-field="congresos"></div>
+        <div class="field"><label>Conferencias:</label><input data-field="conferencias"></div>
+        <div class="field"><label>Certificado:</label><div class="upload">Adjuntar archivo<input type="file" accept="image/*,.pdf"></div></div>
+      </form>
+    </section>
+
+    <!-- Pantalla 5: Experiencia laboral -->
+    <section class="screen" data-title="Experiencia laboral">
+      <h1>Experiencia Laboral</h1>
+      <form>
+        <div class="field"><label>Empresa:</label><input data-field="empresa"></div>
+        <div class="field"><label>Periodo de trabajo:</label><input data-field="periodoTrabajo" placeholder="Ej. 2024 - 2025"></div>
+        <div class="field"><label>Puesto/Rol:</label><input data-field="puestoRol"></div>
+      </form>
+    </section>
+
+    <!-- Pantalla 6: Proyectos / Prácticas -->
+    <section class="screen" data-title="Proyectos / Prácticas">
+      <h1>Proyectos / Prácticas</h1>
+      <form>
+        <div class="field"><label>Práctica realizada:</label><input data-field="practicaRealizada"></div>
+        <div class="field"><label>Descripción de la práctica:</label><textarea data-field="descripcionPractica"></textarea></div>
+        <div class="field"><label>Evidencias:</label><div class="upload">Adjuntar archivos, imágenes, etc.<input type="file" multiple accept="image/*,.pdf,.doc,.docx"></div></div>
+      </form>
+    </section>
+
+    <!-- Pantalla 7: Habilidades -->
+    <section class="screen" data-title="Habilidades">
+      <h1>Habilidades</h1>
+      <form>
+        <div class="field"><label>Habilidades Técnicas (Hard Skills):</label><textarea data-field="habilidadesTecnicas" placeholder="Conocimientos específicos o el manejo de herramientas"></textarea></div>
+        <div class="field"><label>Habilidades Blandas (Soft Skills):</label><textarea data-field="habilidadesBlandas" placeholder="Habilidades personales o interpersonales"></textarea></div>
+      </form>
+    </section>
+
+    <!-- Pantalla 8: Intereses -->
+    <section class="screen" data-title="Intereses">
+      <h1>Intereses</h1>
+      <form onsubmit="event.preventDefault()">
+        <div class="field">
+          <label for="intereses-texto">Intereses profesionales:</label>
+          <p class="subtle">Escribe libremente tus áreas de interés, especialidades o temas profesionales. Puedes separarlos por comas o escribirlos en líneas diferentes.</p>
+          <textarea id="intereses-texto" data-field="interesesTexto" rows="5"
+            placeholder="Ejemplo: Desarrollo web, ciberseguridad, inteligencia artificial, diseño UX/UI..."></textarea>
+        </div>
+        <div class="cv-photo-picker">
+          <label for="cv-photo-input">Fotografía profesional (opcional)</label>
+          <input id="cv-photo-input" type="file" accept="image/jpeg,image/png,image/webp">
+          <p class="small-note">La fotografía se utiliza únicamente en este navegador. No se guarda en Firebase. Máximo 5 MB.</p>
+          <div id="cv-photo-status" class="small-note" aria-live="polite"></div>
+        </div>
+        <button class="primary" type="button" id="finish-cv-btn">Continuar</button>
+        <div class="center">
+          <button class="download" type="button" id="download-cv-btn">Generar / Descargar CV en PDF</button>
+          <p class="small-note">Se intentará ajustar el contenido a una página A4. Si no cabe sin reducir demasiado la letra, continuará en páginas adicionales.</p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="cv-modal-backdrop" hidden>
+    <section class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cv-modal-title">
+      <button type="button" class="modal-close" id="cv-modal-close" aria-label="Cerrar ventana">×</button>
+      <h2 id="cv-modal-title">Continúa construyendo tu CV</h2>
+      <p id="cv-modal-description" class="subtle">Selecciona el apartado que deseas completar.</p>
+      <div id="cv-modal-content"></div>
+      <div class="modal-actions" id="cv-modal-actions"></div>
+    </section>
+  </div>
+
+  <!-- Contenedor exclusivo para construir e imprimir el CV -->
+  <article id="cv-print" aria-hidden="true"></article>
+
+</body>
+</html>
