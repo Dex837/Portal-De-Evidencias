@@ -254,5 +254,11 @@
   <!-- Contenedor exclusivo para construir e imprimir el CV -->
   <article id="cv-print" aria-hidden="true"></article>
 
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./NC.js");
+    }
+  </script>
+
 </body>
 </html>
